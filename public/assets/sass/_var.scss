@@ -1,0 +1,18 @@
+.no-padding {
+	@include respond-to(large) { padding-top: 0 !important; padding-bottom: 0 !important; }
+}
+
+.no-padding-top {
+	@include respond-to(small) { padding-top: 30px !important; }
+	@include respond-to(large) { padding-top: 0 !important; }
+}
+
+.no-padding-bottom-mobile {
+	@include respond-to(small-medium) { padding-bottom: 0 !important; }
+}
+
+.no-padding-bottom {
+	@include respond-to(large) { padding-bottom: 0 !important; }
+}
+
+*:focus { outline: none !important; }

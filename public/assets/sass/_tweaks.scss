@@ -1,0 +1,13 @@
+.image {
+	max-width: 500px;
+	width: 100%;
+
+}
+
+.img-galeri {
+	margin: 0;
+	display: grid;
+	grid-template-rows: 1fr auto;
+	margin-bottom: 10px;
+	break-inside: avoid;
+}

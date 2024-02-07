@@ -1,0 +1,404 @@
+/* RESPONSIVE SLIDES JS */
+
+.rslides { position: relative; list-style: none; overflow: hidden;  
+	li { -webkit-backface-visibility: hidden; position: absolute; display: none; left: 0; top: 0; width: 100%;
+		&:first-child { position: relative; display: block; float: left; }
+	}
+}
+
+.rslides_tabs{ display: none;}
+.rslides_nav{ display: block;}
+.rslides_container {
+	margin-bottom: 50px;
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.centered-btns_nav {
+	z-index: 3;
+	position: absolute;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	top: 50%;
+	left: 0;
+	opacity: 0.7;
+	text-indent: -9999px;
+	overflow: hidden;
+	text-decoration: none;
+	height: 61px;
+	width: 38px;
+	background: transparent url("themes.gif") no-repeat left top;
+	margin-top: -45px;
+}
+
+.centered-btns_nav:active {
+	opacity: 1.0;
+}
+
+.centered-btns_nav.next {
+	left: auto;
+	background-position: right top;
+	right: 0;
+}
+
+.transparent-btns_nav {
+	z-index: 3;
+	position: absolute;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	top: 0;
+	left: 0;
+	display: block;
+	background: #fff; /* Fix for IE6-9 */
+	opacity: 0;
+	filter: alpha(opacity=1);
+	width: 20%;
+	text-indent: -9999px;
+	overflow: hidden;
+	height: 100px;
+}
+
+.transparent-btns_nav.next {
+	left: auto;
+	right: 0;
+}
+
+.large-btns_nav {
+	z-index: 3;
+	position: absolute;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	opacity: 0.6;
+	text-indent: -9999px;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	background: #000 url("themes.gif") no-repeat left 50%;
+	width: 38px;
+}
+
+.large-btns_nav:active {
+	opacity: 1.0;
+}
+
+.large-btns_nav.next {
+	left: auto;
+	background-position: right 50%;
+	right: 0;
+}
+
+.centered-btns_nav:focus,
+.transparent-btns_nav:focus,
+.large-btns_nav:focus {
+	outline: none;
+}
+
+.centered-btns_tabs,
+.transparent-btns_tabs,
+.large-btns_tabs {
+	margin-top: 10px;
+	text-align: center;
+	width: 100%;
+	margin-left: 0px;
+
+	@include respond-to(small) {
+		margin-left:5px;
+	}
+}
+
+.centered-btns_tabs li,
+.transparent-btns_tabs li,
+.large-btns_tabs li {
+	display: inline;
+	float: none;
+	_float: left;
+	*float: left;
+	margin-right: 5px;
+}
+
+.centered-btns_tabs a,
+.transparent-btns_tabs a,
+.large-btns_tabs a {
+	text-indent: -9999px;
+	overflow: hidden;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background: #ccc;
+	background: rgba(0,0,0, .2);
+	display: inline-block;
+	_display: block;
+	*display: block;
+	-webkit-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+	-moz-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+	box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+	width: 9px;
+	height: 9px;
+}
+
+.centered-btns_here a,
+.transparent-btns_here a,
+.large-btns_here a {
+	background: #222;
+	background: rgba(0,0,0, .8);
+}
+
+.rslides1_nav.prev {
+	z-index: 7;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 22.5%;
+	margin-left: 1rem;
+	transform: translateY(-50%);
+	background-image: url(../img/icons/garnish-30.png);
+	background-repeat: no-repeat;
+	background-size: 35%;
+	background-position: center;
+	background-color: #b7b7b7;
+	width: 60px;
+	height: 60px;
+	color: transparent;
+	-webkit-animation: prevbtn 1.5s linear 1s infinite alternate; /* Safari 4.0 - 8.0 */
+	animation: prevbtn 1.5s linear 1s infinite alternate;
+
+	@include respond-to(small) {
+		left: 0;
+		margin-left: 1rem;
+		margin-top: 50%;
+	}
+	
+	@include respond-to(medium-to-large) {
+		margin-left: 0;
+		margin-top: 37.5%;
+	}
+	
+}
+
+.rslides1_nav.prev:hover {
+	background-image: url('../img/icons/garnish-32.png');
+	background-color: #7e7e7e;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes prevbtn {
+    0%   { margin-left: 1rem; }
+		25% { margin-left: 0.75rem; }
+		50% { margin-left: 0.5rem; }
+		75% { margin-left: 0.75rem; }
+    100% { margin-left: 1rem; }
+}
+
+/* Standard syntax */
+@keyframes prevbtn {
+    0%   { margin-left: 1rem; }
+		25% { margin-left: 0.75rem; }
+		50% { margin-left: 0.5rem; }
+		75% { margin-left: 0.75rem; }
+    100% { margin-left: 1rem; }
+}
+
+.rslides1_nav.next {
+	z-index: 7;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 22%;
+	margin-right: 1rem;
+	transform: translateY(-50%);
+	background-image: url('../img/icons/garnish-31.png');
+	background-repeat: no-repeat;
+	background-size: 35%;
+	background-position: center;
+	background-color: #b7b7b7;
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	-webkit-animation: nextbtn 1.5s linear 1s infinite alternate; /* Safari 4.0 - 8.0 */
+	animation: nextbtn 1.5s linear 1s infinite alternate;
+	
+	@include respond-to(small) {
+		margin-left: 96%;
+		margin-top: 50%;
+	}
+	
+	@include respond-to(medium-to-large) {
+		margin-left: 96%;
+		margin-top: 37.5%;
+	}
+	
+}
+
+.rslides1_nav.next:hover {
+	background-image: url('../img/icons/garnish-33.png');
+	background-color: #7e7e7e;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes nextbtn {
+    0%   { margin-right: 1rem; }
+		25% { margin-right: 0.75rem; }
+		50% { margin-right: 0.5rem; }
+		75% { margin-right: 0.75rem; }
+    100% { margin-right: 1rem; }
+}
+
+/* Standard syntax */
+@keyframes nextbtn {
+    0%   { margin-right: 1rem; }
+		25% { margin-right: 0.75rem; }
+		50% { margin-right: 0.5rem; }
+		75% { margin-right: 0.75rem; }
+    100% { margin-right: 1rem; }
+}
+
+
+.rslides2_nav.prev {
+	z-index: 6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 21%;
+	margin-left: 1rem;
+	background-image: url('../img/icons/garnish-30.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+	color: transparent;
+
+	@include respond-to(small) {
+		margin-top: 66%;
+		left: 0;
+		margin-left: 0.75rem;
+	}
+	
+}
+
+.rslides2_nav.prev:hover {
+	background-image: url('../img/icons/garnish-32.png');
+}
+
+.rslides2_nav.next {
+	z-index: 6;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 21%;
+	margin-right: 0.5rem;
+	background-image: url('../img/icons/garnish-31.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	
+	@include respond-to(small) {
+		margin-top: 66%;
+		margin-right: 0.25rem;
+		right: 0;
+	}
+	
+}
+
+.rslides2_nav.next:hover {
+	background-image: url('../img/icons/garnish-33.png');
+}
+
+
+.rslides_tabs {
+	text-align: center;
+	display: block;
+	
+	li {
+		display: inline-block;
+		margin-left: 10px;
+		
+		a {
+			font-size: 1.25rem;
+		}
+		
+	}
+}
+
+/* VIDEO JS */
+
+  .vjs-fluid {
+    overflow: hidden;
+  }
+  .vjs-control-bar {
+    display: block;
+  }
+  .vjs-control {
+    position: absolute;
+  }
+  .vjs-progress-control {
+    bottom: 28px; left: 0;
+    height: 10px;
+    width:  100%;
+  }
+  .vjs-progress-holder  {
+    position: absolute;
+    left: 0; margin: 0;
+    height: 8px; width:  100%;
+  }
+  .vjs-play-progress,
+  .vjs-load-progress {
+    height: 8px;
+  }
+  .vjs-play-progress:before {
+    font-size: 12px; top: -2px; 
+    text-shadow: 0 0 2px black 
+  }
+  .vjs-current-time {
+    display: block;
+    left: 35px;
+  }
+  .vjs-time-divider {
+    position: absolute;
+    display: block;
+    left: 70px;
+  }
+  .vjs-remaining-time {
+    display: none;   
+  }
+  .vjs-duration {
+    display: block;
+    left: 70px;
+  }
+  .vjs-volume-menu-button {
+    position: absolute;
+    bottom: 0; right: 55px;
+  }
+  .vjs-playback-rate {
+    position: absolute;
+    bottom: 0; right: 28px;
+  }
+  .vjs-fullscreen-control {
+    position: absolute;
+    bottom: 0; right: 0;
+  }
+
+.vjs-big-play-button {
+	display: block;
+}
+
+.video-js.vjs-fluid {
+	@include respond-to(small) { 
+		max-width: 95% !important;
+		margin-left: 2% !important;
+	}
+}
+
+.video-js {
+	position: relative !important;
+	width: 100% !important;
+	height: auto !important;
+}
+
+.vjs-poster {
+	position: absolute !important;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}

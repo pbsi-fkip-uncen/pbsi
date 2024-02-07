@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|svg|eot|woff|woff2)$">
+Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On 
+ExpiresDefault "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType image/gif "access plus 1 week"
+ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/jpg "access plus 1 week"
+ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

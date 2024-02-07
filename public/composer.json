@@ -1,0 +1,17 @@
+{
+  "type": "project",
+  "require": {
+    "contentful/contentful": "^2.0",     
+    "altorouter/altorouter": "1.1.0",
+	  "cebe/markdown": "~1.2.0",
+    "hybridauth/hybridauth" : "~3.0"
+  },
+  "scripts": {
+    "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
+  },
+  "extra": {
+      "google/apiclient-services": [
+          "Sheets"
+      ]
+  }
+}

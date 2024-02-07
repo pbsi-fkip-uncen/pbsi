@@ -1,0 +1,52 @@
+@mixin respond-to($media) {
+  $vsm:364px; $sm:480px; $med:768px; $lg:960px; $xl:1320px; $xxl:1600px; $xxxl:1920px; $four-k:2400px;
+
+  @if $media == very-small {
+    @media only screen and (max-width: $vsm) { @content; }
+  } 
+	@else if $media == small {
+    @media only screen and (max-width: $sm) { @content; }
+  }
+	
+	@else if $media == small-medium {
+    @media only screen and (max-width: $med) { @content; }
+  }
+	
+	@else if $media == small-to-medium {
+    @media only screen and (min-width: $sm) and (max-width: $med) { @content; }
+  }
+	
+  @else if $media == medium {
+    @media only screen and (min-width: $med) { @content; }
+  }
+	
+	@else if $media == medium-to-large {
+    @media only screen and (min-width: $med) and (max-width: $lg) { @content; }
+  }
+	
+  @else if $media == large {
+    @media only screen and (min-width: $lg) { @content; }
+  }
+	@else if $media == large-laptop {
+    @media only screen and (min-width: $xl) { @content; }
+  }
+	
+  @else if $media == extra-large {
+    @media only screen and (min-width: $xxl) { @content; }
+  }
+	
+	@else if $media == xxx-large {
+    @media only screen and (min-width: $xxxl) { @content; }
+  }
+	
+	@else if $media == four-k {
+    @media only screen and (min-width: $four-k) { @content; }
+  }
+	
+  @else if $media == retina {
+    @media only screen and (-webkit-device-pixel-ratio: 2) { @content; }
+  }
+  @else {
+    @media only screen and (min-width: $media) { @content; }  
+  }
+}
