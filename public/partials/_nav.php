@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar bg-blue-light" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
@@ -23,10 +23,14 @@
               </a>
               <div class="navbar-dropdown">
                 <?php foreach ($menu->getSubpages() as $submenu) { ?>
-                  <a class="navbar-item" href="<?= $submenu->getSlug(); ?>">
-                    <?= $submenu->getTitle() ?>
-                  </a>
-                <?php } ?>
+                  <?php if ($submenu->getSlug() == 'galeri') { ?>
+                    <a class="navbar-item" href="<?= $submenu->getSlug(); ?>">
+                    <?php } else { ?>
+                      <a class="navbar-item" href="<?= $menu->getSlug(); ?>/<?= $submenu->getSlug(); ?>">
+                      <?php } ?>
+                      <?= $submenu->getTitle() ?>
+                    </a>
+                  <?php } ?>
               </div>
             </div>
           <?php } else { ?>

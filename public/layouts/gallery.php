@@ -20,7 +20,7 @@ setMetaTags($entry);
 	<div class="container">
 		<div class="columns">
 			<div class="column">
-				<?= $entry->getIntroduction(); ?>
+				<?= $parser->parse($entry->getIntroduction()); ?>
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,7 @@ setMetaTags($entry);
 	<div class="container">
 		<div class="columns">
 			<div class="column">
-				<?= $entry->getDescription(); ?>
+				<?= $parser->parse($entry->getDescription()); ?>
 			</div>
 		</div>
 	</div>

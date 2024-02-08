@@ -56,8 +56,7 @@
 
 @font-face {
   font-family: 'eurostileregular';
-  src: url('eurostile-webfont.woff2') format('woff2'),
-       url('eurostile-webfont.woff') format('woff');
+  src: url('../fonts/eurostile/eurostile.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 
@@ -65,8 +64,7 @@
 
 @font-face {
   font-family: 'eurostilemedium';
-  src: url('eurostile-med-webfont.woff2') format('woff2'),
-       url('eurostile-med-webfont.woff') format('woff');
+  src: url('../fonts/eurostile/Eurostile-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 
@@ -74,8 +72,7 @@
 
 @font-face {
   font-family: 'eurostilebold';
-  src: url('eurostilebold-webfont.woff2') format('woff2'),
-       url('eurostilebold-webfont.woff') format('woff');
+  src: url('../fonts/eurostile/Eurostile-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 
@@ -182,6 +179,17 @@ footer div.footer {
 .image {
   max-width: 500px;
   width: 100%;
+}
+
+.image2 {
+  text-align: -webkit-center;
+  width: 100%;
+}
+
+.image2 img {
+  display: block;
+  height: auto;
+  max-width: 500px;
 }
 
 /* RESPONSIVE SLIDES JS */
@@ -681,6 +689,14 @@ footer div.footer {
     max-width: 95% !important;
     margin-left: 2% !important;
   }
+
+  .display2 {
+    display: block !important;
+  }
+
+  .display1 {
+    display: none !important;
+  }
 }
 
 .video-js {
@@ -806,8 +822,20 @@ footer div.footer {
 
 .big-title-left {
   text-align: left;
-  border-right: 10px solid yellow;
+  border-left: 10px solid yellow;
+  padding-left: 10px;
+}
+
+.big-title-right2 {
+  text-align: right;
+  /* border-right: 10px solid yellow; */
   padding-right: 10px;
+}
+
+.big-title-left2 {
+  text-align: left;
+  /* border-left: 10px solid yellow; */
+  padding-left: 10px;
 }
 
 .big-title-blue {
@@ -821,4 +849,53 @@ footer div.footer {
 
 .eurostilebold {
   font-family: 'eurostilebold';
+}
+
+.swiper-slide img {
+  object-position: center;
+}
+
+/* .swiper-slide::before{
+  filter: blur(30px);
+}
+.swiper-slide::after{
+  filter: blur(30px);
+} */
+
+.swiper {
+  height: 80vh;
+}
+
+.news-item-content {
+  /* margin-left: 1rem; */
+  font-size: 1.2em;
+}
+
+.mt-3r {
+  margin-top: 3rem;
+}
+
+.mb-3r {
+  margin-bottom: 3rem;
+}
+
+.swiper-slide3 img {
+  max-height: 10rem;
+}
+
+.centered {
+  vertical-align: middle;
+}
+
+.footer {
+  padding: 0;
+  background-color: transparent;
+}
+
+.container-footer {
+  padding: 3rem 1.5rem 6rem;
+}
+
+.bg-blue-light {
+  background-color: #bfd3e7;
 }

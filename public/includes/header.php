@@ -52,6 +52,7 @@ if (!isset($metaKeywords) || is_null($metaKeywords)) {
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 	<link rel="stylesheet" href="assets/css/baguetteBox.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/overwrite2.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/overwrite.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -19,6 +19,8 @@
 
 	$router->map( 'GET', '/galeri', 'layouts/gallery.php', 'gallery');
 
+	$router->map( 'GET', '/kontak', 'layouts/contact.php', 'contact');
+
 	$router->map( 'GET', '/[:slug]', 'layouts/page.php', 'single-page');
 	
 	$home = $router->map( 'GET', '/', 'layouts/home.php', 'home'); //map home

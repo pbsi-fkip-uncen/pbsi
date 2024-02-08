@@ -13,6 +13,7 @@ if ($entries->getTotal() > 0) {
   $setting = $entries[0];
 }
 
+$i = 0;
 foreach ($blocks as $block):
 
   switch ($block->getType()) {
@@ -24,78 +25,38 @@ foreach ($blocks as $block):
       ?>
 
       <!-- Banner -->
-      <section class="hero soft-brown bg-0">
-        <div class="hero-body banner-top">
-          <div class="container">
-            <div class="columns is-multiline is-mobile">
-              <?php $src = 'assets/img/placeholder.webp';
-              if ($block->getThumbnail() != null) {
-                $src = $block->getThumbnail()->getFile()->getUrl();
-              } ?>
-              <div class="background-slide-home"
-                style="background-image: url('<?= $src; ?>'); height: 100vh; width: 100%; background-size: cover; background-position: center; display: block; object-fit: cover; background-repeat: no-repeat;">
-                <div class="overlay txt-white">
-                  <div class="box-card reveal reveal_visible">
-                    <p class="banner-title txt-white"><span>
-                        <?= $block->getSubtitle(); ?>
-                      </span></p>
-                    <h1 class="banner-title txt-5em txt-white">
-                      <?= $block->getTitle(); ?>
-                    </h1>
-                    <div class="banner-title txt-white">
-                      <p>
-                        <?= $parser->parse($block->getDescription()); ?>
-                      </p>
-                    </div>
-                    <h4 class="title is-4 txt-white">
-                      <?= $parser->parse($block->getIntroduction()); ?>
-                    </h4>
+      <section class="hero soft-brown bg-0 swiper2" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
+        <div class="hero-body banner-top px-0 swiper-wrapper">
+          <?php $src = 'assets/img/placeholder.webp';
+          foreach ($block->getCards() as $card) {
+            if ($card->getThumbnail() != null) {
+              $src = $card->getThumbnail()->getFile()->getUrl();
+            } ?>
+            <div class="background-slide-home swiper-slide"
+              style="background-image: url('<?= $src; ?>'); height: 100vh; width: 100%; background-size: cover; background-position: center; display: block; object-fit: cover; background-repeat: no-repeat;">
+              <div class="overlay txt-white">
+                <div class="box-card reveal reveal_visible">
+                  <p class="banner-title txt-white"><span>
+                      <?= $card->getSubtitle(); ?>
+                    </span></p>
+                  <h1 class="banner-title txt-5em txt-white">
+                    <?= $card->getTitle(); ?>
+                  </h1>
+                  <div class="banner-title txt-white">
+                    <p>
+                      <?= $parser->parse($card->getDescription()); ?>
+                    </p>
                   </div>
+                  <h4 class="title is-4 txt-white">
+                    <?= $parser->parse($card->getIntroduction()); ?>
+                  </h4>
                 </div>
               </div>
             </div>
-          </div>
+          <?php } ?>
         </div>
       </section>
       <!-- Banner -->
-
-      <?php
-      break;
-    case 'Hero2':
-      ?>
-
-      <!-- Banner 2 -->
-      <section class="hero is-large soft-brown bg-0 hero2parent">
-        <div class="hero-body banner-top2">
-          <div class="container">
-            <div class="columns is-multiline is-mobile">
-              <div class="column is-full-mobile is-12-tablet">
-                <h1 class="title is-1">
-                  <?= $block->getTitle(); ?>
-                </h1>
-                <br />
-                <a href="<?= $block->getButtonLink(); ?>" target="_blank" class="banner-link">
-                  <?= $block->getButtonText(); ?>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <?php $card = $block->getCards()[0]; ?>
-        <?php if ($card) { ?>
-          <div class="hero-body hero2">
-            <a href="<?= $card->getButtonLink(); ?>" target="_blank">
-              <div class="banner-event2" style="background-image: url('<?= $card->getImage()->getFile()->getUrl(); ?>');">
-                <div class="columns is-multiline is-mobile">
-                  <div class="column is-full-mobile is-12-tablet">
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        <?php } ?>
-      </section>
-      <!-- Banner 2 -->
 
       <?php
       break;
@@ -104,7 +65,7 @@ foreach ($blocks as $block):
 
       <!-- Event -->
 
-      <section class="section bg-brown-2" id="event">
+      <section class="section bg-brown-2" id="event" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
         <div class="container">
           <div class="columns is-multiline is-mobile is-vcentered">
             <div class="column is-full-mobile is-half-tablet splide">
@@ -160,8 +121,11 @@ foreach ($blocks as $block):
       <?php break;
     case 'tentang kami': ?>
 
-      <section class="">
+      <section class="section" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
         <div class="container">
+          <div class="title_news_home big-title big-title-left big-title-blue">
+            <?= $block->getTitle(); ?>
+          </div>
           <div class="columns">
             <div class="column is-6-tablet is-full-mobile">
               <?php $src = 'assets/img/placeholder.webp';
@@ -194,8 +158,11 @@ foreach ($blocks as $block):
       <?php break;
     case 'visi-misi': ?>
 
-      <section class="">
+      <section class="section" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
         <div class="container">
+          <div class="title_news_home big-title big-title-right big-title-blue">
+            <?= $block->getTitle(); ?>
+          </div>
           <div class="columns">
             <div class="column is-6-tablet is-full-mobile">
 
@@ -214,12 +181,12 @@ foreach ($blocks as $block):
               </div>
 
             </div>
-            <div class="column is-6-tablet is-full-mobile">
-              <?php $src = 'assets/img/placeholder.webp';
-              if ($block->getThumbnail() != null) {
-                $src = $block->getThumbnail()->getFile()->getUrl();
-              } ?>
-              <img src="<?= $src; ?>" />
+            <?php $src = 'assets/img/placeholder.webp';
+            if ($block->getThumbnail() != null) {
+              $src = $block->getThumbnail()->getFile()->getUrl();
+            } ?>
+            <div class="column is-6-tablet is-full-mobile"
+              style="background-image:url('<?= $src; ?>'); background-position: center bottom; background-repeat: no-repeat; background-size: cover;">
             </div>
           </div>
         </div>
@@ -228,8 +195,11 @@ foreach ($blocks as $block):
       <?php break;
     case 'tujuan': ?>
 
-      <section class="">
+      <section class="section" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
         <div class="container">
+          <div class="title_news_home big-title big-title-left big-title-blue">
+            <?= $block->getTitle(); ?>
+          </div>
           <div class="columns">
             <div class="column is-6-tablet is-full-mobile">
               <?php $src = 'assets/img/placeholder.webp';
@@ -240,7 +210,7 @@ foreach ($blocks as $block):
             </div>
             <div class="column is-6-tablet is-full-mobile">
               <div class="div-vision">
-                <h3>Tujuan</h3>
+                <!-- <h3>Tujuan</h3> -->
                 <p>
                   <?= $setting->getProdiPurpose(); ?>
                 </p>
@@ -253,13 +223,16 @@ foreach ($blocks as $block):
       <?php break;
     case 'galeri': ?>
 
-      <section class="">
+      <section class="section" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
         <div class="container swiper">
-          <div class="columns swiper-wrapper">
+          <div class="title_news_home big-title big-title-right big-title-blue">
+            <?= $block->getTitle(); ?>
+          </div>
+          <div class="swiper-wrapper is-relative">
             <?php foreach ($block->getCards() as $card) { ?>
               <?php foreach ($card->getImages() as $img) { ?>
-                <div class="column is-4-tablet is-full-mobile swiper-slide">
-                  <img src="<?= $img->getFile()->getUrl(); ?>" />
+                <div class="swiper-slide"
+                  style="background-image:url('<?= $img->getFile()->getUrl(); ?>'); background-position: center bottom; background-repeat: no-repeat; background-size: cover;">
                 </div>
               <?php }
             } ?>
@@ -268,18 +241,37 @@ foreach ($blocks as $block):
       </section>
 
       <?php break;
+    case 'logo-logo': ?>
+
+      <section class="section mt-3r mb-3r" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
+        <div class="container swiper3" style="height: 20vh;">
+          <div class="swiper-wrapper">
+            <?php foreach ($block->getImages() as $img) { ?>
+              <div class="swiper-slide centered">
+                <img src="<?= $img->getFile()->getUrl(); ?>" />
+              </div>
+              <?php
+            } ?>
+          </div>
+        </div>
+      </section>
+
+      <?php break;
     case 'artikel': ?>
 
-      <section class="">
-        <div class="container">
-          <div class="columns slick-article">
+      <section class="section" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
+        <div class="container swiper1">
+          <div class="title_news_home big-title big-title-left big-title-blue">
+            <?= $block->getTitle(); ?>
+          </div>
+          <div class="swiper-wrapper">
             <?php $query = new \Contentful\Delivery\Query;
             $query->setContentType('article')
               ->setLimit(3);
             $articles = $client->getEntries($query); ?>
             <?php foreach ($articles as $article) { ?>
-              <div class="column is-4-tablet is-full-mobile">
-                <a href="<?= $article->getSlug(); ?>">
+              <div class="swiper-slide">
+                <a href="artikel/<?= $article->getSlug(); ?>">
                   <div class="news-item news-item-cat-blog col-md-4">
                     <div class="news-item-image">
                       <?php $src = 'assets/img/placeholder.webp';
@@ -303,12 +295,6 @@ foreach ($blocks as $block):
                           <span class="font-eurostile-bold">
                             <?= $article->getTitle(); ?>
                           </span>
-                          <br>
-                          <?php if ($article->getDescription() != null) { ?>
-                            <span class="font-eurostile-regular">
-                              <?= $article->getDescription(); ?>
-                            </span>
-                          <?php } ?>
                         </a>
                       </div>
                       <div class="news-item-desc font-proximanova-regular"></div>
@@ -334,7 +320,7 @@ foreach ($blocks as $block):
         <?php $c = 0;
         foreach ($block->getImages() as $img):
           $c++ ?>
-          <section class="hero is-large">
+          <section class="hero is-large" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
             <a href="<?= $block->getButtonLink(); ?>" target="_blank">
               <div class="banner-event" style="background-image: url('<?= $img->getFile()->getUrl(); ?>');">
                 <div class="hero-body">
@@ -357,7 +343,8 @@ foreach ($blocks as $block):
       <!-- Custom -->
       <?php if ($block->getImages()) { ?>
 
-        <section class="section is-fullheight bg-event" style="border-bottom: 24px solid #5448c8;">
+        <section class="section is-fullheight bg-event"
+          style="border-bottom: 24px solid #5448c8; <?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>">
           <div class="">
             <div class="columns is-multiline is-mobile reverse-column is-vcentered">
               <div class="column is-full-tablet is-full-mobile is-relative" data-aos="fade-right" data-aos-duration="1000">
@@ -536,7 +523,7 @@ foreach ($blocks as $block):
         foreach ($block->getImages() as $img):
           $c++ ?>
           <section class="section  gradient-home bg-brown"
-            style=" background-size: cover; width: 100%;  display: flex; float: left; position: relative; z-index: 2; transition: opacity 1000ms ease-in-out 0s;"
+            style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>; background-size: cover; width: 100%;  display: flex; float: left; position: relative; z-index: 2; transition: opacity 1000ms ease-in-out 0s;"
             id="home">
 
 
@@ -564,7 +551,7 @@ foreach ($blocks as $block):
     case 'About':
       ?>
 
-      <section class="section" id="about">
+      <section class="section" id="about" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>;">
         <div class="container">
           <div class="columns is-multiline is-mobile is-vcentered">
             <div class="column is-full-mobile is-4-tablet">
@@ -594,7 +581,8 @@ foreach ($blocks as $block):
 
       <!-- Our-Values -->
 
-      <section class="section soft-brown bg-1 relative" id="our-values">
+      <section class="section soft-brown bg-1 relative" id="our-values"
+        style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>;">
         <div class="container">
           <div class="columns is-multiline is-mobile pb-2 is-centered">
             <div class="column is-10-mobile is-full-tablet has-text-centered value-title">
@@ -663,7 +651,7 @@ foreach ($blocks as $block):
 
       <!--Team-->
 
-      <section class="section relative" id="team">
+      <section class="section relative" id="team" style="<?= $i % 2 != 0 ? '' : 'background-color: #f3f4f5;' ?>;">
 
         <div class="container">
           <div class="columns is-multiline is-mobile is-centered pb-2">
@@ -754,6 +742,7 @@ foreach ($blocks as $block):
       <?php
       break;
   }
+  $i++;
 endforeach;
 ?>
 
@@ -773,8 +762,102 @@ endforeach;
 
     const swiper = new Swiper('.swiper', {
       // Optional parameters
-      direction: 'vertical',
+      direction: 'horizontal',
       loop: true,
+      spaceBetween: 10,
+      slidesPerView: 2,
+      freeMode: true,
+      watchSlidesProgress: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3000,
+      },
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+
+    const swiper1 = new Swiper('.swiper1', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 3,
+      freeMode: true,
+      watchSlidesProgress: true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+
+    const swiper2 = new Swiper('.swiper2', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 1,
+      freeMode: true,
+      watchSlidesProgress: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3000,
+      },
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+
+    const swiper3 = new Swiper('.swiper3', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      spaceBetween: 50,
+      slidesPerView: 6,
+      freeMode: true,
+      watchSlidesProgress: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2000,
+      },
 
       // If we need pagination
       pagination: {
