@@ -899,3 +899,45 @@ footer div.footer {
 .bg-blue-light {
   background-color: #bfd3e7;
 }
+
+.txt-black {
+  color: black;
+}
+
+.mb-2r {
+  margin-bottom: 2rem !important;
+}
+
+.mt-2r {
+  margin-top: 2rem !important;
+}
+
+.mb-1r {
+  margin-bottom: 1rem !important;
+}
+
+.mt-1r {
+  margin-top: 1rem !important;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.m--1r {
+  margin: -1rem;
+}
+
+.border-card {
+  border: solid;
+  border-top: none;
+  border-color: #c0c0c1;
+}
+
+.ls-normal {
+  letter-spacing: normal;
+}
+
+.navbar-item, .navbar-link {
+  padding: 0.5rem;
+}

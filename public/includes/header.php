@@ -4,19 +4,19 @@
 global $metaTitle, $metaDescription, $metaKeywords, $websiteURL, $websiteName;
 
 // move this to globals to grab from Setting
-$websiteName = 'PBSI';
+$websiteName = 'PBSI - Pendidikan Bahasa dan Sastra Indonesia';
 $websiteURL = '';
 
 if (!isset($metaTitle) || is_null($metaTitle)) {
-	$metaTitle = 'PBSI';
+	$metaTitle = 'PBSI - Pendidikan Bahasa dan Sastra Indonesia';
 }
 
 if (!isset($metaDescription) || is_null($metaDescription)) {
-	$metaDescription = 'PBSI';
+	$metaDescription = 'PBSI - Pendidikan Bahasa dan Sastra Indonesia';
 }
 
 if (!isset($metaKeywords) || is_null($metaKeywords)) {
-	$metaKeywords = 'PBSI';
+	$metaKeywords = 'PBSI - Pendidikan Bahasa dan Sastra Indonesia';
 }
 
 ?>

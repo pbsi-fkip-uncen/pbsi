@@ -16,6 +16,7 @@
 
 	$router->map( 'GET', '/profil', 'layouts/profile.php', 'profile');
 	$router->map( 'GET', '/profil/[:slug]', 'layouts/profile-detail.php', 'profile-detail');
+	$router->map( 'GET', '/profil-dosen/[:slug]', 'layouts/lecturer-detail.php', 'lecturer-detail');
 
 	$router->map( 'GET', '/galeri', 'layouts/gallery.php', 'gallery');
 
